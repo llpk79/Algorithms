@@ -6,7 +6,6 @@ def find_max_profit(prices):
     stack = []
     max_ = 0
     for i in range(len(prices)):
-        print(i, stack)
         if not stack:
             stack.append(i)
         elif prices[i] >= prices[stack[-1]]:
@@ -21,7 +20,7 @@ def find_max_profit(prices):
         new_max = prices[stack[-1]] - prices[stack[0]]
         if new_max > max_:
             max_ = new_max
-    # If we haven't found any increasing runs, the price is strictly decreasing
+    # max_ will be 0 if we haven't found any increasing runs, the price is strictly decreasing
     # and we can safely minimize loss by buying on the second-to-last day and
     # selling on the last.
     if not max_:
